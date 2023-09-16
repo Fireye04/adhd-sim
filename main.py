@@ -7,7 +7,7 @@ def gen_options (options):
         print()
 
 def main():
-    pass
+    print("😀")
 
 if __name__ == "__main__":
     main()
