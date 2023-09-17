@@ -4,8 +4,22 @@ from player import Player
 def gen_options(options):
     o_pairs = {}
     for i, option in enumerate(options):
-        o_pairs[i] = option
-        print()
+        o_pairs[i + 1] = option
+
+    for key, item in o_pairs.items():
+        print(f"{key}. {item}")  # Add cost here later
+
+    valid = False
+    while not valid:
+        try:
+            useri = int(input(""))
+            if useri in o_pairs.keys():
+                valid = True
+                return useri
+            else:
+                raise ValueError
+        except ValueError:
+            print("Invalid input")
 
 
 def main():
@@ -26,6 +40,10 @@ def main():
 
     user = Player(stats)
     print(user)
+
+    options = ["be cool", "be uncool", "cry in corner"]
+
+    gen_options(options)
 
 
 if __name__ == "__main__":
