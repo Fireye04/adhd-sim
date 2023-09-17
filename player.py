@@ -1,58 +1,37 @@
 class Player:
-    def __init__(
-        self,
-        d_stress: int,
-        d_stress_i: int,
-        d_happiness: int,
-        d_happiness_i: int,
-        d_hunger: int,
-        d_hunger_i: int,
-        d_hygiene: int,
-        d_hygiene_i: int,
-        d_sleep: int,
-        d_sleep_i: int,
-        d_bananas: int,
-        d_bananas_i: int,
-        d_grades: int,
-        d_grades_i: int,
-        d_relationips: {},
-        d_relationships_i: int,
-        d_skills: {},
-        d_skills_i: int,
-    ) -> None:
+    def __init__(self, _stats) -> None:
         # Each stat gets a value and an increment. The increment is the daily change
 
         # ----------------STATS----------------
 
-        self.stress = d_stress
-        self.stress_increment = d_stress_i
+        self.stats = _stats
 
-        self.happiness = d_happiness
-        self.happiness_increment = d_happiness_i
+        self.stress = _stats["stress"][0]
+        self.stress_increment = _stats["stress"][1]
 
-        self.hunger = d_hunger
-        self.hunger_increment = d_hunger_i
+        self.happiness = _stats["happiness"][0]
+        self.happiness_increment = _stats["happiness"][1]
 
-        self.hygiene = d_hygiene
-        self.hygiene_increment = d_hygiene_i
+        self.hunger = _stats["hunger"][0]
+        self.hunger_increment = _stats["hunger"][1]
 
-        self.sleep = d_sleep
-        self.sleep_increment = d_sleep_i
+        self.hygiene = _stats["hygiene"][0]
+        self.hygiene_increment = _stats["hygiene"][1]
 
-        self.bananas = d_bananas
-        self.bananas_increment = d_bananas_i
+        self.sleep = _stats["sleep"][0]
+        self.sleep_increment = _stats["sleep"][1]
 
-        self.grades = d_grades
-        self.grades_increment = d_grades_i
+        self.bananas = _stats["bananas"][0]
+        self.bananas_increment = _stats["bananas"][1]
 
-        self.relationships = d_relationips
-        self.relationship_increment = d_relationships_i
+        self.grades = _stats["grades"][0]
+        self.grades_increment = _stats["grades"][1]
 
-        self.skills = d_skills
-        self.skills_increment = d_skills_i
+        self.relationships = _stats["relationships"][0]
+        self.relationship_increment = _stats["relationships"][1]
 
-        # TODO: add all stats to the stats dict
-        self.stats = {}
+        self.skills = _stats["skills"][0]
+        self.skills_increment = _stats["skills"][1]
 
         # ----------------/STATS----------------
 
@@ -71,8 +50,8 @@ class Player:
             f"sleep- {self.sleep} ({self.sleep_increment})\n"
             f"bananas- {self.bananas} ({self.bananas_increment})\n"
             f"grades- {self.grades} ({self.grades_increment})\n"
-            f"relationships- {self.format_dict(self.relationships)}\n({self.relationship_increment})\n"
-            f"skills- {self.format_dict(self.skills)}\n({self.skills_increment})"
+            f"relationships- ({self.relationship_increment}){self.format_dict(self.relationships)}\n"
+            f"skills- ({self.skills_increment}){self.format_dict(self.skills)}\n"
         )
 
     def pass_time(self):

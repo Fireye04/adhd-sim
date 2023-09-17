@@ -9,25 +9,22 @@ def gen_options(options):
 
 
 def main():
-    user = Player(
-        404,
-        909,
-        42,
-        242,
-        22,
-        99,
-        19,
-        12,
-        9,
-        4,
-        9,
-        1,
-        2,
-        3,
-        {"bob": 2, "not bob": 0},
-        4,
-        {"gay": 4, "not gay": 0},
-    )
+    relationships = {"bob": 2, "not bob": 0}
+    skills = {"gay": 4, "not gay": 0}
+
+    stats = {
+        "stress": [50, 0],
+        "happiness": [50, 0],
+        "hunger": [50, 0],
+        "hygiene": [50, 0],
+        "sleep": [50, 0],
+        "bananas": [50, 0],
+        "grades": [50, 0],
+        "relationships": [relationships, 0],
+        "skills": [skills, 0],
+    }
+
+    user = Player(stats)
     print(user)
 
 
