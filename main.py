@@ -1,30 +1,10 @@
 from player import Player
-
-
-def gen_options(options):
-    o_pairs = {}
-    for i, option in enumerate(options):
-        o_pairs[i + 1] = option
-
-    for key, item in o_pairs.items():
-        print(f"{key}. {item}")  # Add cost here later
-
-    valid = False
-    while not valid:
-        try:
-            useri = int(input(""))
-            if useri in o_pairs.keys():
-                valid = True
-                return useri
-            else:
-                raise ValueError
-        except ValueError:
-            print("Invalid input")
+from encounter import Encounter
 
 
 def main():
-    relationships = {"bob": 2, "not bob": 0}
-    skills = {"gay": 4, "not gay": 0}
+    relationships = {"bob": 0, "not bob": 0}
+    skills = {"gay": 0, "not gay": 0}
 
     stats = {
         "stress": [50, 0],
@@ -41,9 +21,27 @@ def main():
     user = Player(stats)
     print(user)
 
-    options = ["be cool", "be uncool", "cry in corner"]
+    o1 = [
+        [
+            "be cool",
+            ["stress[0] < 60"],
+            [
+                "relationships2[0][bob] += 1",
+            ],
+        ],
+        ["be uncool", []],
+        [
+            "cry in corner",
+        ],
+    ]
 
-    gen_options(options)
+    relationships2: [relationships, 0]
+    i = 0
+    # EVAL IS FOR LOGIC EXEC IS FOR CODE
+
+    exec("i+=1")
+
+    # e1 = Encounter("you're at a party, what do you do?", o1, user)
 
 
 if __name__ == "__main__":
