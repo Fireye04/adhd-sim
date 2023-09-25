@@ -21,17 +21,26 @@ def main():
     user = Player(stats)
     print(user)
 
+    # options: [option1, option2]
+    # option1: [option prompt, pre-reqs, result prompt, results]
     o1 = [
         [
             "be cool",
-            ["stress[0] < 60"],
-            [
-                "relationships2[0][bob] += 1",
-            ],
+            ["self.player.stress < 60", "self.player.happiness > 20", "sleep > 60"],
+            "you socialize with bob and have yourself a bit of fun!",
+            ["self.player.relationships2[bob] += 1", "self.player.happiness += 5"],
         ],
-        ["be uncool", []],
+        [
+            "be uncool",
+            ["self.player.happiness > 10"],
+            "you try to be cool but are too stressed.",
+            ["self.player.stress += 5", "self.player.happiness -=5"],
+        ],
         [
             "cry in corner",
+            [],
+            "you cry in the corner. not bob comes and comforts you.",
+            ["self.player.stress+=5", "self.player.relationships[not bob] += 2"],
         ],
     ]
 
@@ -41,7 +50,8 @@ def main():
 
     exec("i+=1")
 
-    # e1 = Encounter("you're at a party, what do you do?", o1, user)
+    e1 = Encounter("you're at a party, what do you do?", o1, user)
+    e1.gen_options()
 
 
 if __name__ == "__main__":
